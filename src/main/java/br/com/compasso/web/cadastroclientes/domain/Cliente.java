@@ -1,33 +1,50 @@
 package br.com.compasso.web.cadastroclientes.domain;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-@Table(name = "TB_PRODUTO")
+@Table(name = "TB_CLIENTE")
 public class Cliente implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long idCliente;
+    private long id;
 
+    @NotBlank
+    @Size(max = 200)
+    @Column(name = "nome_cliente", nullable = false, length = 200)
     private String nomeCliente;
 
+    @NotBlank
+    @Size(max = 10)
+    @Column(nullable = false, length = 10)
     private String sexo;
 
+    @NotBlank
+    @Column(name = "data_nascimento", nullable = false)
+    @Temporal(TemporalType.DATE)
     private Date dataNascimento;
 
+    @NotBlank
+    @Size(min = 1, max = 3)
+    @Column(nullable = false, length = 3)
     private int idade;
 
+    @ManyToOne
+    @JoinColumn(name = "cidade_moradia")
     private Cidade cidadeMoradia;
 
-    public long getIdCliente() {
-        return idCliente;
+    public long getId() {
+        return id;
     }
 
-    public void setIdCliente(long idCliente) {
-        this.idCliente = idCliente;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getNomeCliente() {

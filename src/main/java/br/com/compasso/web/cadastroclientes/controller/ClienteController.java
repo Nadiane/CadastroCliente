@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.persistence.Entity;
 
 @RestController
-@RequestMapping(value = "/api")
+@RequestMapping(value = "/apicliente")
 public class ClienteController {
 
     @Autowired

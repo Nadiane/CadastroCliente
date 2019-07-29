@@ -1,27 +1,33 @@
 package br.com.compasso.web.cadastroclientes.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.hibernate.validator.constraints.NotBlank;
+
+import javax.persistence.*;
+import javax.validation.constraints.Size;
+import java.util.Objects;
 
 @Entity
+@Table(name = "TB_CIDADE")
 public class Cidade {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long idCidade;
+    private long id;
 
+    @NotBlank
+    @Column(name = "nome_cidade", nullable = false, length = 100)
     private String nomeCidade;
 
+    @ManyToOne
+    @JoinColumn(columnDefinition = "estado_id", referencedColumnName = "id")
     private Estado estado;
 
-    public long getIdCidade() {
-        return idCidade;
+    public long getId() {
+        return id;
     }
 
-    public void setIdCidade(long idCidade) {
-        this.idCidade = idCidade;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getNomeCidade() {
@@ -38,5 +44,20 @@ public class Cidade {
 
     public void setEstado(Estado estado) {
         this.estado = estado;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Cidade cidade = (Cidade) o;
+        return id == cidade.id &&
+                Objects.equals(nomeCidade, cidade.nomeCidade) &&
+                Objects.equals(estado, cidade.estado);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, nomeCidade, estado);
     }
 }

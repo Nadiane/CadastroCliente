@@ -6,6 +6,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ICidadeRepository extends JpaRepository<Cidade, Long> {
 
+    Cidade cadastrarCidade(Cidade cidade);
+
     Cidade consultarPorNome(String nome);
 
     Cidade consultarPorEstado(Estado estado);
