@@ -9,5 +9,4 @@ public interface IClienteRepository extends JpaRepository<Cliente, Long> {
 
     Cliente consultarClientePorId(long id);
 
-    Cliente alterarNomeCliente(String nome);
 }

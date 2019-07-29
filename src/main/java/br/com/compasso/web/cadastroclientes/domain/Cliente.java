@@ -14,7 +14,7 @@ public class Cliente implements Serializable {
 
     private String nomeCliente;
 
-    private char sexo;
+    private String sexo;
 
     private Date dataNascimento;
 
@@ -38,11 +38,11 @@ public class Cliente implements Serializable {
         this.nomeCliente = nomeCliente;
     }
 
-    public char getSexo() {
+    public String getSexo() {
         return sexo;
     }
 
-    public void setSexo(char sexo) {
+    public void setSexo(String sexo) {
         this.sexo = sexo;
     }
 

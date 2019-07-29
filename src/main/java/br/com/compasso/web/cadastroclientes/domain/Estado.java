@@ -15,7 +15,7 @@ public class Estado {
 
     private String nomeEstado;
 
-    private char uf;
+    private String uf;
 
     private List<Cidade> cidades;
 
@@ -35,11 +35,11 @@ public class Estado {
         this.nomeEstado = nomeEstado;
     }
 
-    public char getUf() {
+    public String getUf() {
         return uf;
     }
 
-    public void setUf(char uf) {
+    public void setUf(String uf) {
         this.uf = uf;
     }
 

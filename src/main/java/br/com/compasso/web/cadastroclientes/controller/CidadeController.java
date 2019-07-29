@@ -24,10 +24,9 @@ public class CidadeController {
         return cidadeRepository.consultarPorNome(nome);
     }
 
-    /*@GetMapping("/cidade/{estado}")
-    public Cidade consultarCidadePorEstado(@PathVariable(value = "estado") Character estado){
-        Cidade cidade = cidadeRepository.consultarPorEstado(new Estado().setUf(estado));
-        return cidade;
-    }*/
+    @GetMapping("/cidade/{estado}")
+    public Cidade consultarCidadePorEstado(@PathVariable(value = "estado") Estado estado){
+        return cidadeRepository.consultarPorEstado(estado);
+    }
 
 }
