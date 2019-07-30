@@ -4,12 +4,13 @@ import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Table(name = "TB_ESTADO")
-public class Estado {
+@Table(name = "tb_estado")
+public class Estado implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -24,7 +25,7 @@ public class Estado {
     @Column(nullable = false, length = 2)
     private String uf;
 
-    @OneToMany(mappedBy = "TB_ESTADO", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "id", cascade = CascadeType.ALL)
     private List<Cidade> cidades;
 
     public long getId() {

@@ -9,11 +9,11 @@ import org.springframework.web.bind.annotation.*;
 import javax.persistence.Entity;
 
 @RestController
-@RequestMapping(value = "/apicliente")
+@RequestMapping(value = "/api")
 public class ClienteController {
 
     @Autowired
-    private IClienteRepository clienteRepository;
+    IClienteRepository clienteRepository;
 
     @PostMapping("/cliente")
     public Cliente salvarCliente(@RequestBody Cliente cliente){
@@ -22,12 +22,12 @@ public class ClienteController {
 
     @GetMapping("/cliente/{id}")
     public Cliente listarClientePorId(@PathVariable (value = "id") long id){
-        return clienteRepository.consultarClientePorId(id);
+        return clienteRepository.findById(id);
     }
 
     @GetMapping("/cliente/{nome}")
     public Cliente listarClientePorNome(@PathVariable (value = "nome") String nome){
-        return clienteRepository.consultarClientePorNome(nome);
+        return clienteRepository.findByNomeCliente(nome);
     }
 
     @DeleteMapping("/cliente")

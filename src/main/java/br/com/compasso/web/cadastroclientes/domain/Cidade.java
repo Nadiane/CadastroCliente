@@ -4,11 +4,12 @@ import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-@Table(name = "TB_CIDADE")
-public class Cidade {
+@Table(name = "tb_cidade")
+public class Cidade implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -19,7 +20,7 @@ public class Cidade {
     private String nomeCidade;
 
     @ManyToOne
-    @JoinColumn(columnDefinition = "estado_id", referencedColumnName = "id")
+    @JoinColumn(name = "id", insertable = false, updatable = false)
     private Estado estado;
 
     public long getId() {

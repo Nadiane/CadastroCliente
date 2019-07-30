@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 public class CidadeController {
 
     @Autowired
-    private ICidadeRepository cidadeRepository;
+    ICidadeRepository cidadeRepository;
 
     @PostMapping("/cidade")
     public Cidade salvarCidade(@RequestBody Cidade cidade){
@@ -21,12 +21,12 @@ public class CidadeController {
 
     @GetMapping("/cidade/{nome}")
     public Cidade consultarCidadePorNome(@PathVariable(value = "nome") String nome){
-        return cidadeRepository.consultarPorNome(nome);
+        return cidadeRepository.findByNomeCidade(nome);
     }
 
     @GetMapping("/cidade/{estado}")
     public Cidade consultarCidadePorEstado(@PathVariable(value = "estado") Estado estado){
-        return cidadeRepository.consultarPorEstado(estado);
+        return cidadeRepository.findByEstado(estado);
     }
 
 }

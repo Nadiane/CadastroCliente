@@ -8,7 +8,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-@Table(name = "TB_CLIENTE")
+@Table(name = "tb_cliente")
 public class Cliente implements Serializable {
 
     @Id
@@ -36,7 +36,7 @@ public class Cliente implements Serializable {
     private int idade;
 
     @ManyToOne
-    @JoinColumn(name = "cidade_moradia")
+    @JoinColumn(name = "cidade_id")
     private Cidade cidadeMoradia;
 
     public long getId() {
