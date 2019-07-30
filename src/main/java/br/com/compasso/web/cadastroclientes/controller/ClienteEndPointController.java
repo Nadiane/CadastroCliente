@@ -21,7 +21,7 @@ import java.util.List;
 @Api(value = "API REST Clientes")
 @CrossOrigin(origins = "*")
 @Validated
-public class ClienteController {
+public class ClienteEndPointController {
 
     @Autowired
     private IClienteRepository clienteRepository;

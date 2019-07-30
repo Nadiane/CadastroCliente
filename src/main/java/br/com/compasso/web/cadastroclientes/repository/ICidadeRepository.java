@@ -12,4 +12,5 @@ public interface ICidadeRepository extends JpaRepository<Cidade, Long> {
     public Cidade findByNome(String nome);
 
     public List<Cidade> findByEstado(String estado);
+
 }
