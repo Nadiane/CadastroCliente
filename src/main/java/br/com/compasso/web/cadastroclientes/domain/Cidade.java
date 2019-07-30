@@ -16,12 +16,14 @@ public class Cidade implements Serializable {
     private long id;
 
     @NotBlank
-    @Column(name = "nome_cidade", nullable = false, length = 100)
-    private String nomeCidade;
+    @Size(max = 100)
+    @Column(nullable = false, length = 100, unique = true)
+    private String nome;
 
-    @ManyToOne
-    @JoinColumn(name = "id", insertable = false, updatable = false)
-    private Estado estado;
+    @NotBlank
+    @Size(max = 100)
+    @Column(nullable = false, length = 100)
+    private String estado;
 
     public long getId() {
         return id;
@@ -31,19 +33,19 @@ public class Cidade implements Serializable {
         this.id = id;
     }
 
-    public String getNomeCidade() {
-        return nomeCidade;
+    public String getNome() {
+        return nome;
     }
 
-    public void setNomeCidade(String nomeCidade) {
-        this.nomeCidade = nomeCidade;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public Estado getEstado() {
+    public String getEstado() {
         return estado;
     }
 
-    public void setEstado(Estado estado) {
+    public void setEstado(String estado) {
         this.estado = estado;
     }
 
@@ -53,12 +55,12 @@ public class Cidade implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
         Cidade cidade = (Cidade) o;
         return id == cidade.id &&
-                Objects.equals(nomeCidade, cidade.nomeCidade) &&
+                Objects.equals(nome, cidade.nome) &&
                 Objects.equals(estado, cidade.estado);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, nomeCidade, estado);
+        return Objects.hash(id, nome, estado);
     }
 }

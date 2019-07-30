@@ -17,27 +17,24 @@ public class Cliente implements Serializable {
 
     @NotBlank
     @Size(max = 200)
-    @Column(name = "nome_cliente", nullable = false, length = 200)
-    private String nomeCliente;
+    @Column(nullable = false, length = 200)
+    private String nome;
 
     @NotBlank
     @Size(max = 10)
     @Column(nullable = false, length = 10)
     private String sexo;
 
-    @NotBlank
     @Column(name = "data_nascimento", nullable = false)
     @Temporal(TemporalType.DATE)
     private Date dataNascimento;
 
-    @NotBlank
-    @Size(min = 1, max = 3)
     @Column(nullable = false, length = 3)
-    private int idade;
+    private Integer idade;
 
-    @ManyToOne
-    @JoinColumn(name = "cidade_id")
-    private Cidade cidadeMoradia;
+    @ManyToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "id_cidade_fk")
+    private Cidade cidade;
 
     public long getId() {
         return id;
@@ -47,12 +44,12 @@ public class Cliente implements Serializable {
         this.id = id;
     }
 
-    public String getNomeCliente() {
-        return nomeCliente;
+    public String getNome() {
+        return nome;
     }
 
-    public void setNomeCliente(String nomeCliente) {
-        this.nomeCliente = nomeCliente;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public String getSexo() {
@@ -71,19 +68,19 @@ public class Cliente implements Serializable {
         this.dataNascimento = dataNascimento;
     }
 
-    public int getIdade() {
+    public Integer getIdade() {
         return idade;
     }
 
-    public void setIdade(int idade) {
+    public void setIdade(Integer idade) {
         this.idade = idade;
     }
 
-    public Cidade getCidadeMoradia() {
-        return cidadeMoradia;
+    public Cidade getCidade() {
+        return cidade;
     }
 
-    public void setCidadeMoradia(Cidade cidadeMoradia) {
-        this.cidadeMoradia = cidadeMoradia;
+    public void setCidade(Cidade cidade) {
+        this.cidade = cidade;
     }
 }
