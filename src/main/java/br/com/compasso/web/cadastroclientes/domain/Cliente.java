@@ -1,6 +1,7 @@
 package br.com.compasso.web.cadastroclientes.domain;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.validation.annotation.Validated;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
