@@ -37,9 +37,8 @@ public class CidadeEnddPointController {
     @ApiOperation(value = "Salva uma Cidade")
     public ResponseEntity<?> salvarCidade(@Valid @RequestBody Cidade cidade){
         Cidade cidadeEncontra = cidadeRepository.findByNome(cidade.getNome());
-        if(cidadeEncontra != null){
+        if(cidadeEncontra != null)
            return new ResponseEntity<>(new CustomizacaoTipoErro("Cidade já cadastrada."), HttpStatus.NOT_FOUND);
-        }
         return new ResponseEntity(cidadeRepository.save(cidade), HttpStatus.CREATED);
     }
 
