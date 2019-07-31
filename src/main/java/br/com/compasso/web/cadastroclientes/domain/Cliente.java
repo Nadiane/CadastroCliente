@@ -33,7 +33,7 @@ public class Cliente implements Serializable {
     @Column(nullable = false, length = 3)
     private Integer idade;
 
-    @ManyToOne(cascade = {CascadeType.ALL})
+    @ManyToOne(cascade = {CascadeType.DETACH})
     @JoinColumn(name = "id_cidade_fk")
     private Cidade cidade;
 
